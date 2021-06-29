@@ -1,0 +1,349 @@
+/*
+http://information-bibouroku.hatenablog.com/entry/2018/02/07/102402
+http://www.htmq.com/csskihon/401.shtml
+http://www.htmq.com/style/margin.shtml
+*/
+/* ダークモード対応 */
+:root {
+  --main-text: #333;
+  --main-background: #fcfcfc;
+  --shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  --link: #00e;
+  --hover: #e00;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-text: #ccc;
+    --main-background: #333;
+    --shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    --link: #ff1;
+    --hover: #1ff;
+  }
+}
+
+/* 全体 */
+body {
+  font-family: sans-serif;
+  margin: 10px;
+  color: var(--main-text);
+  background-color: var(--main-background);
+}
+h1 {
+  text-align: center;
+}
+h2 {
+  text-align: left;
+  margin: 10px 20px;
+}
+h3 {
+  text-align: left;
+  margin: 10px 20px;
+}
+h4 {
+  text-align: left;
+  margin: 10px 20px;
+}
+h5 {
+  text-align: left;
+  margin: 10px 20px;
+}
+h6 {
+  text-align: left;
+  margin: 10px 20px;
+}
+a {
+  margin: 10px 40px;
+  text-decoration: none;
+  color: var(--link);
+}
+a:hover {
+  text-decoration: underline;
+  color: var(--hover);
+}
+
+/* 周波数再生 */
+.table_freq {
+  width: 100%;
+}
+.th_header {
+  width: 90px;
+  padding: 10px 0;
+  text-align: right;
+}
+.td_radio {
+  width: 330px;
+  padding: 10px 0;
+  text-align: center;
+}
+.td_range {
+  width: 330px;
+  padding: 10px 0;
+}
+.td_canvas {
+  width: auto;
+  padding: 5px 0;
+}
+.input_radio {
+  display: none;
+}
+.input_radio + label {
+  cursor: pointer;
+  display: inline-block;
+  color: var(--main-background);
+  background-color: var(--main-text);
+  padding: 5px 10px;
+}
+.input_radio:checked + label { 
+  color: #fcfcfc;
+  background-color: #33c;
+}
+.input_range {
+  -webkit-appearance: none;
+  width: 320px;
+  height: 20px;
+  background: linear-gradient(to right, var(--main-text) 0%, var(--main-text) 100%);
+  background-size: 320px 10px;
+  background-position: center;
+  background-repeat: no-repeat;
+  outline: none;
+}
+.input_range::-webkit-slider-thumb {
+  cursor: pointer;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #33c;
+  position: relative;
+  z-index: 1;
+}
+.input_range::-moz-range-thumb {
+  cursor: pointer;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #33c;
+  position: relative;
+  border: none;
+}
+.input_range::-moz-focus-outer {
+  border: 0;
+}
+.input_range::-webkit-slider-thumb:active {
+  box-shadow: var(--shadow);
+}
+.input_number {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-align-last: right;
+  color: var(--main-text);
+  background-color: var(--main-background);
+  border: none;
+}
+.input_number:hover {
+  border-bottom: 01px solid var(--main-text);
+}
+.canvas_timedomain, .canvas_frequency {
+  width: 256px;
+  height: 64px;
+  margin: 1px 1px;
+  border: 1px solid var(--main-text);
+}
+
+/* 再生・停止 */
+.check_play {
+  display: none;
+}
+.img_play {
+  cursor: pointer;
+  width: 64px;
+  margin: 10px 10px 20px 20px;
+}
+.img_play:hover {
+  opacity: 0.75;
+}
+.img_wave {
+  cursor: pointer;
+  width: 100px;
+  height: 75px;
+  margin: 10px 10px;
+  border-bottom: 2px solid var(--main-background);
+}
+.img_wave:hover {
+  opacity: 0.75;
+}
+.img_wave:active {
+  border-bottom: none;
+}
+
+/* タイマー */
+.label_timer {
+  margin: 10px 10px 20px 20px;
+}
+.time_timer {
+  cursor: pointer;
+  font-size: 16px;
+  font-family: sans-serif;
+}
+.button_timer {
+  cursor: pointer;
+  font-size: 16px;
+}
+.button_timer:hover {
+  opacity: 0.75;
+}
+
+/* 周波数説明 */
+.table_type {
+  width: 100%;
+}
+.th_name {
+  width: 100px;
+  padding: 10px 10px;
+  text-align: right;
+  color: var(--main-background);
+  background-color: var(--main-text);
+}
+.td_feature {
+  width: auto;
+  padding: 10px 10px;
+}
+.table_type, .th_name, .td_feature {
+  border: 1px solid var(--main-text);
+  border-collapse: collapse;
+}
+.th_name {
+  border-bottom: 1px solid var(--main-background);;
+}
+
+/* お問い合わせ */
+.google_forms {
+  width: 100%;
+  height: 720px;
+  border: 0;
+  margin: 0;
+}
+
+/* タブ全体 */
+.tabs {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  box-shadow: var(--shadow);
+}
+
+/* タブ */
+.tab_item {
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  background-color: #ccc;
+  color: #666;
+  border-bottom: 2px solid #369;
+  line-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  float: left;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+input[name="tab_item"] {
+  display: none;
+}
+
+/* タブの中身 */
+.tab_content {
+  display: none;
+  padding: 20px 20px 10px;
+  clear: both;
+  overflow: hidden;
+}
+
+/* 選択中のタブのコンテンツのみを表示 */
+#audio:checked ~ #audio_content,
+#solfeggio:checked ~ #solfeggio_content,
+#wave:checked ~ #wave_content,
+#contact:checked ~ #contact_content {
+  display: block;
+}
+
+/* 選択中のタブのスタイルを変更 */
+.tabs input:checked + .tab_item {
+  background-color: #069;
+  color: #fff;
+}
+
+/* 開閉状態を示すアイコン */
+.tab_item::before,
+.tab_item::after {
+  content: '';
+  width: 20px;
+  height: 3px;
+  background: #000;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+
+/* 一本は縦にして+にする */
+.tab_item::after {
+  transform: translateY(-50%) rotate(90deg);
+  transition: 0.5s;
+}
+
+/* 縦棒を横棒にして-にする */
+.tabs input:checked + .tab_item:after {
+  transform: translateY(-50%) rotate(0);
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 1365px) {
+  /* 周波数再生 */
+  .th_header {
+    width: 100%;
+    display: block;
+    text-align: left;
+  }
+  .td_radio, .td_range {
+    display: inline-block;
+  }
+  .td_canvas {
+    width: 100%;
+    display: block;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* スマートフォン */
+  .th_header, .td_radio, .td_range {
+    width: 100%;
+    display: block;
+  }
+  .th_header {
+    text-align: left;
+  }
+  .td_canvas {
+    display: none;
+  }
+  .img_play {
+    display: block;
+  }
+  .th_name, .td_feature {
+    width: 100%;
+    display: block;
+  }
+  .th_name {
+    text-align: left;
+  }
+  .table_type, .td_feature {
+    border: none;
+  }
+  .google_forms {
+    height: 750px;
+  }
+}

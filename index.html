@@ -1,0 +1,473 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=yes">
+		<meta name=”description” content="全種類のソルフェジオ周波数を聞いて癒されよう！波形の変更により音色の調整可能。タイマー機能あり。ソルフェジオ周波数の効果一覧や波形と音色の関係も分かる。">
+		<title>ソルフェジオ周波数♪</title>
+		<link rel="manifest" href="manifest.json">
+		<link rel="stylesheet" href="./css/main.css">
+		<link rel="shortcut icon" href="favicon.ico">
+		<script src="./js/main.js"></script>
+		<script type="text/javascript">
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register("service-worker.js").then(function () {
+				console.log("[Service Worker] Register");
+			});
+		}
+		</script>
+	</head>
+	<body>
+		<h1>ソルフェジオ周波数</h1>
+		<div class="tabs">
+			<input type="checkbox" id="audio" name="tab_item" checked />
+			<label class="tab_item" for="audio">再生</label>
+			<div class="tab_content" id="audio_content">
+				<div id="audio-container"></div>
+				<table class="table_freq">
+					<tr>
+						<th class="th_header">174Hz</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-174" id="sine-174" checked /><label for="sine-174">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-174" id="square-174" /><label for="square-174">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-174" id="sawtooth-174" /><label for="sawtooth-174">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-174" id="triangle-174" /><label for="triangle-174">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-174" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-174"></canvas>
+							<canvas class="canvas_frequency" id="frequency-174"></canvas>
+						</td>
+					</tr>
+					<tr>
+						<th class="th_header">285Hz</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-285" id="sine-285" checked /><label for="sine-285">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-285" id="square-285" /><label for="square-285">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-285" id="sawtooth-285" /><label for="sawtooth-285">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-285" id="triangle-285" /><label for="triangle-285">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-285" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-285"></canvas>
+							<canvas class="canvas_frequency" id="frequency-285"></canvas>
+						</td>
+					</tr>
+					<tr>
+						<th class="th_header">396Hz</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-396" id="sine-396" checked /><label for="sine-396">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-396" id="square-396" /><label for="square-396">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-396" id="sawtooth-396" /><label for="sawtooth-396">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-396" id="triangle-396" /><label for="triangle-396">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-396" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-396"></canvas>
+							<canvas class="canvas_frequency" id="frequency-396"></canvas>
+						</td>
+					</tr>
+					<tr>
+						<th class="th_header">417Hz</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-417" id="sine-417" checked /><label for="sine-417">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-417" id="square-417" /><label for="square-417">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-417" id="sawtooth-417" /><label for="sawtooth-417">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-417" id="triangle-417" /><label for="triangle-417">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-417" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-417"></canvas>
+							<canvas class="canvas_frequency" id="frequency-417"></canvas>
+						</td>
+					</tr>
+					<tr>
+						<th class="th_header">528Hz</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-528" id="sine-528" checked /><label for="sine-528">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-528" id="square-528" /><label for="square-528">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-528" id="sawtooth-528" /><label for="sawtooth-528">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-528" id="triangle-528" /><label for="triangle-528">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-528" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-528"></canvas>
+							<canvas class="canvas_frequency" id="frequency-528"></canvas>
+						</td>
+					</tr>
+					<tr>
+						<th class="th_header">639Hz</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-639" id="sine-639" checked /><label for="sine-639">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-639" id="square-639" /><label for="square-639">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-639" id="sawtooth-639" /><label for="sawtooth-639">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-639" id="triangle-639" /><label for="triangle-639">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-639" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-639"></canvas>
+							<canvas class="canvas_frequency" id="frequency-639"></canvas>
+						</td>
+					</tr>
+					<tr>
+						<th class="th_header">741Hz</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-741" id="sine-741" checked /><label for="sine-741">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-741" id="square-741" /><label for="square-741">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-741" id="sawtooth-741" /><label for="sawtooth-741">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-741" id="triangle-741" /><label for="triangle-741">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-741" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-741"></canvas>
+							<canvas class="canvas_frequency" id="frequency-741"></canvas>
+						</td>
+					</tr>
+					<tr>
+						<th class="th_header">852Hz</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-852" id="sine-852" checked /><label for="sine-852">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-852" id="square-852" /><label for="square-852">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-852" id="sawtooth-852" /><label for="sawtooth-852">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-852" id="triangle-852" /><label for="triangle-852">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-852" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-852"></canvas>
+							<canvas class="canvas_frequency" id="frequency-852"></canvas>
+						</td>
+					</tr>
+					<tr>
+						<th class="th_header">963Hz</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-963" id="sine-963" checked /><label for="sine-963">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-963" id="square-963" /><label for="square-963">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-963" id="sawtooth-963" /><label for="sawtooth-963">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-963" id="triangle-963" /><label for="triangle-963">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-963" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-963"></canvas>
+							<canvas class="canvas_frequency" id="frequency-963"></canvas>
+						</td>
+					</tr>
+					<tr>
+						<th class="th_header">
+							<select class="input_number" id="frequency"></select>Hz
+						</th>
+						<td class="td_radio">
+							<input type="radio" class="input_radio" name="radio-wave-0" id="sine-0" checked /><label for="sine-0">正弦波</label>
+							<input type="radio" class="input_radio" name="radio-wave-0" id="square-0" /><label for="square-0">矩形波</label>
+							<input type="radio" class="input_radio" name="radio-wave-0" id="sawtooth-0" /><label for="sawtooth-0">ノコギリ波</label>
+							<input type="radio" class="input_radio" name="radio-wave-0" id="triangle-0" /><label for="triangle-0">三角波</label>
+						</td>
+						<td class="td_range"><input type="range" class="input_range" id="volume-0" min="0" max="1" step="0.01" value="0" /></td>
+						<td class="td_canvas">
+							<canvas class="canvas_timedomain" id="timedomain-0"></canvas>
+							<canvas class="canvas_frequency" id="frequency-0"></canvas>
+						</td>
+					</tr>
+				</table>
+				<div>
+					<input type="checkbox" class="check_play" id="play-check">
+						<label class="label_play" id="play-label" for="play-check">
+							<img class="img_play" id="play-img" src="./img/play.svg" />
+						</label>
+					</input>
+					<img class="img_wave" id="sine-img" src="./img/sine.svg" onclick="playScale('sine');" />
+					<img class="img_wave" id="square-img" src="./img/square.svg" onclick="playScale('square');" />
+					<img class="img_wave" id="sawtooth-img" src="./img/sawtooth.svg" onclick="playScale('sawtooth');" />
+					<img class="img_wave" id="triangle-img" src="./img/triangle.svg" onclick="playScale('triangle');" />
+				</div>
+				<div>
+					<label class="label_timer">タイマー</label>
+					<input type="time" class="time_timer" id="timer" min="00:00:01" step="1" value="00:00:01" />
+					<button type="button" class="button_timer" id="start-timer">開始</button>
+					<button type="button" class="button_timer" id="stop-timer" disabled>中止</button>
+					<label class="label_timer" id="remaining-time"></label>
+				</div>
+			</div>
+			<input type="checkbox" id="solfeggio" name="tab_item" />
+			<label class="tab_item" for="solfeggio">ソルフェジオ周波数の効果</label>
+			<div class="tab_content" id="solfeggio_content">
+				<table class="table_type">
+					<tr>
+						<th class="th_name">174Hz</th>
+						<td class="td_feature">意識の拡大と進化の基礎</td>
+						<td class="td_feature">心を安定させる音</td>
+					</tr>
+					<tr>
+						<th class="th_name">285Hz</th>
+						<td class="td_feature">多次元領域からの意識の拡大と促進</td>
+						<td class="td_feature">自然治癒力を促し心身を整える音</td>
+					</tr>
+					<tr>
+						<th class="th_name">396Hz</th>
+						<td class="td_feature">罪の意識や恐怖からの解放</td>
+						<td class="td_feature">トラウマ、恐怖から解放する音</td>
+					</tr>
+					<tr>
+						<th class="th_name">417Hz</th>
+						<td class="td_feature">変化に挑戦する心、知性</td>
+						<td class="td_feature">マイナスから変化を促す音</td>
+					</tr>
+					<tr>
+						<th class="th_name">528Hz</th>
+						<td class="td_feature">無限の可能性、DNAの修復、奇跡</td>
+						<td class="td_feature">DNAの損傷を修復する音</td>
+					</tr>
+					<tr>
+						<th class="th_name">639Hz</th>
+						<td class="td_feature">人間関係の向上</td>
+						<td class="td_feature">人との繋がりをもたらす調和の音</td>
+					</tr>
+					<tr>
+						<th class="th_name">741Hz</th>
+						<td class="td_feature">問題を解決する力、表現力の向上</td>
+						<td class="td_feature">コミュニケーション能力を高める音</td>
+					</tr>
+					<tr>
+						<th class="th_name">852Hz</th>
+						<td class="td_feature">直感力の覚醒</td>
+						<td class="td_feature">洞察力、直感力を高める音</td>
+					</tr>
+					<tr>
+						<th class="th_name">963Hz</th>
+						<td class="td_feature">高次元、宇宙意識とつながる</td>
+						<td class="td_feature">脳を活性化する音</td>
+					</tr>
+				</table>
+			</div>
+			<input type="checkbox" id="wave" name="tab_item" />
+			<label class="tab_item" for="wave">波形と音色</label>
+			<div class="tab_content" id="wave_content">
+				<table class="table_type">
+					<tr>
+						<th class="th_name">正弦波</th>
+						<td class="td_feature">基音のみで、倍音を持たない</td>
+						<td class="td_feature">丸く柔らかい音</td>
+						<td class="td_feature">オルガン</td>
+					</tr>
+					<tr>
+						<th class="th_name">三角波</th>
+						<td class="td_feature">全ての奇数次倍音を持つが、高い倍音が少ない</td>
+						<td class="td_feature">丸めな音</td>
+						<td class="td_feature">フルート・リコーダー</td>
+					</tr>
+					<tr>
+						<th class="th_name">矩形波</th>
+						<td class="td_feature">全ての奇数次倍音を持つ</td>
+						<td class="td_feature">少し割れた音</td>
+						<td class="td_feature">クラリネット(木管楽器)・ハープ・マリンバ</td>
+					</tr>
+					<tr>
+						<th class="th_name">ノコギリ波</th>
+						<td class="td_feature">全ての整数倍音を持つ</td>
+						<td class="td_feature">鋭く明るい音</td>
+						<td class="td_feature">バイオリン(弦楽器)・トランペット(金管楽器)</td>
+					</tr>
+				</table>
+			</div>
+			<input type="checkbox" id="contact" name="tab_item" />
+			<label class="tab_item" for="contact">お問い合わせ</label>
+			<div class="tab_content" id="contact_content">
+				<iframe class="google_forms" src="https://docs.google.com/forms/d/e/1FAIpQLSddQVpPMfE7692Sv9o7K6vszuEuzRN2mpeGV1cg9xas7UQOSw/viewform?embedded=true"></iframe>
+			</div>
+		</div>
+		<script type="text/javascript">
+		window.onload = () => {
+
+			// 規定の周波数の波形[ラジオボタン]／押下イベントハンドラ登録
+			let radio = document.querySelectorAll("input[type='radio']");
+			radio.forEach(wave =>
+				wave.addEventListener("click", () => {
+					changeWave(wave.id);
+				}, false)
+			);
+
+			// 規定の周波数のボリューム[スライダー]／入力イベントハンドラ登録
+			let range = document.querySelectorAll("input[type='range']");
+			range.forEach(volume =>
+				volume.addEventListener("input", () => {
+					changeVolume(volume.id, volume.value);
+				}, false)
+			);
+
+			// 周波数リスト[セレクトボックス]／オプション追加（デフォルト：440Hz）
+			let frequency = document.getElementById("frequency");
+			for (let i = 20; i <= 20000; i++) {
+				let option = document.createElement("option");
+				option.value = i;
+				option.innerText = i;
+				if (i == 440) option.selected = true;
+				frequency.appendChild(option);
+			}
+
+			// 周波数リスト[セレクトボックス]／選択イベントハンドラ登録
+			frequency.addEventListener("change", () => {
+				oscillator.frequency.value = parseInt(frequency.value);
+			}, false);
+
+			// 規定の波形の表示[キャンバス]
+			document.querySelectorAll(".canvas_timedomain").forEach(data => {
+				let canvas = document.getElementById(data.id);
+				const WIDTH = canvas.width;
+				const HEIGHT = canvas.height;
+
+				// キャンバスをクリア
+				let canvasCtx = canvas.getContext('2d');
+				canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+
+				// バッファを用意
+				let analyzer = getAnalyser(data.id.split('-')[1]);
+				let bufferLength = analyzer.frequencyBinCount;
+				let dataArray = new Uint8Array(bufferLength);
+
+				function draw() {
+					// 描画関数のループを維持
+					var drawVisual = requestAnimationFrame(draw);
+
+					// 波形データを取得
+					analyzer.getByteTimeDomainData(dataArray);
+
+					// キャンバスを単色で塗りつぶし
+					canvasCtx.fillStyle = 'rgb(251, 251, 251)';
+					canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+					// 描画する線の幅と色を設定
+					canvasCtx.lineWidth = 2;
+					canvasCtx.strokeStyle = 'rgb(51, 51, 51)';
+
+					// 現在のパスをリセット
+					canvasCtx.beginPath();
+
+					// 波形データを描画
+					var sliceWidth = WIDTH * 1.0 / bufferLength;
+					var x = 0;
+					for (var i = 0; i < bufferLength; i++) {
+
+						var y = (dataArray[i] / 128.0) * HEIGHT / 2;
+
+						if (i === 0) {
+							// パスの開始座標を指定
+							canvasCtx.moveTo(x, y);
+						} else {
+							// 座標を指定して線を引く
+							canvasCtx.lineTo(x, y);
+						}
+
+						x += sliceWidth;
+					}
+					canvasCtx.lineTo(WIDTH, HEIGHT / 2);
+
+					// 現在のパスを輪郭表示
+					canvasCtx.stroke()
+				}
+				draw();
+			});
+
+			// 規定の周波数の表示[キャンバス]
+			document.querySelectorAll(".canvas_frequency").forEach(data => {
+				let canvas = document.getElementById(data.id);
+				const WIDTH = canvas.width;
+				const HEIGHT = canvas.height;
+
+				// キャンバスをクリア
+				let canvasCtx = canvas.getContext('2d');
+				canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
+
+				// バッファを用意
+				let analyzer = getAnalyser(data.id.split('-')[1]);
+				let bufferLength = analyzer.frequencyBinCount;
+				let dataArray = new Uint8Array(bufferLength);
+
+				function draw() {
+					// 描画関数のループを維持
+					var drawVisual = requestAnimationFrame(draw);
+
+					// 周波数データを取得
+					analyzer.getByteFrequencyData(dataArray);
+
+					// キャンバスを単色で塗りつぶし
+					canvasCtx.fillStyle = 'rgb(251, 251, 251)';
+					canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+					// 描画するバーの色を設定
+					canvasCtx.fillStyle = 'rgb(51, 51, 51)';
+
+					// 周波数データを描画
+					var barWidth = (WIDTH / bufferLength) * 2.5;
+					var barHeight;
+					var x = 0;
+					for (var i = 0; i < bufferLength; i++) {
+
+						barHeight = dataArray[i];
+
+						canvasCtx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight / 2);
+
+						x += barWidth + 1;
+					}
+				}
+				draw();
+			});
+
+			// 再生ボタン[チェックボックス]／変更イベントハンドラ登録
+			let isReady = false;
+			document.getElementById("play-check").addEventListener("change", () => {
+				if (document.getElementById("play-check").checked) {
+					// オーディオ再生
+					audioContext.resume();
+					document.getElementById("play-img").src = "./img/pause.svg";
+					// 初回のみオシレータを開始する
+					if (!isReady) {
+						startOscillator();
+						isReady = true;
+					}
+				} else {
+					// オーディオ停止
+					audioContext.suspend();
+					document.getElementById("play-img").src = "./img/play.svg";
+				}
+			}, false);
+
+			// タイマー開始[ボタン]／押下イベントハンドラ登録
+			var timer;
+			var totalSeconds = 0;
+			document.getElementById("start-timer").addEventListener("click", () => {
+				// 再生時間を抽出
+				let [hours, minutes, seconds] = document.getElementById('timer').value.split(':');
+				totalSeconds = parseInt(hours) * 60 * 60 + parseInt(minutes) * 60 + parseInt(seconds);
+				// タイマー開始
+				timer = setInterval(countDown, 1000);
+				document.getElementById("play-check").checked = true;
+				document.getElementById("play-check").dispatchEvent(new Event("change")); // 再生ボタンを押下（再生）
+				document.getElementById("start-timer").disabled = true;
+				document.getElementById("stop-timer").disabled = false;
+				document.getElementById("remaining-time").innerText = `${parseInt(hours)}時間${parseInt(minutes)}分${parseInt(seconds)}秒`;
+			}, false);
+
+			// タイマー中止[ボタン]／押下イベントハンドラ登録
+			document.getElementById("stop-timer").addEventListener("click", () => {
+				// タイマークリア
+				clearInterval(timer);
+				document.getElementById("play-check").checked = false;
+				document.getElementById("play-check").dispatchEvent(new Event("change")); // 再生ボタンを押下（停止）
+				document.getElementById("start-timer").disabled = false;
+				document.getElementById("stop-timer").disabled = true;
+				document.getElementById("remaining-time").innerText = "";
+			}, false);
+
+			// タイマー処理ハンドラ
+			var countDown = () => {
+				totalSeconds = totalSeconds - 1;
+				if (totalSeconds == 0) {
+					// 再生ボタンを押下（停止）
+					document.getElementById("stop-timer").dispatchEvent(new Event("click"));
+				} else {
+					// 残時間を更新
+					document.getElementById("remaining-time").innerText = `${Math.floor(totalSeconds / 60 / 60)}時間${Math.floor(totalSeconds / 60) % 60}分${totalSeconds % 60}秒`;
+				}
+			};
+		}
+		</script>
+	</body>
+</html>

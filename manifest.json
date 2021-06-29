@@ -1,0 +1,18 @@
+{
+  "name"              : "Solfeggio",
+  "short_name"        : "Solfeggio",
+  "description"       : "ソルフェジオ周波数",
+  "start_url"         : "/Solfeggio/index.html",
+  "display"           : "standalone",
+  "background_color"  : "#006699",
+  "theme_color"       : "#006699",
+  "icons": [{
+      "src"           : "img/enneagram_192.png",
+      "sizes"         : "192x192",
+      "type"          : "image/png"
+    }, {
+      "src"           : "img/enneagram_256.png",
+      "sizes"         : "256x256",
+      "type"          : "image/png"
+  }]
+}
